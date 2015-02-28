@@ -1,8 +1,5 @@
-
-class MethodChanger {
-main(args){	}
-
-class MethodChangerVisitor {		
-visit(n, arg){		}
+[class MethodChanger {
+class MethodChangerVisitor {
 }
 }
+]
