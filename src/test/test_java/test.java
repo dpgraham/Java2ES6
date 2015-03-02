@@ -1,9 +1,19 @@
+package com.danielpgraham.test;
+
+import java.io.FileInputStream;
+import java.lang.*;
+
 public class MethodChanger {
 
+    /**
+     * Main method
+     * @param args Array of arguments
+     * @throws Exception The exception that is thrown by this method
+     */
     public static void main(String[] args) throws Exception {
         // creates an input stream for the file to be parsed
-        FileInputStream in = new FileInputStream("test.java");
-
+        FileInputStream in = new io.FileInputStream("test.java");
+        String testString = "hello world";
         CompilationUnit cu;
         try {
             // parse the file
@@ -12,8 +22,12 @@ public class MethodChanger {
             in.close();
         }
 
+        int x = 1 + 1; // Hello world!
+
         // visit and change the methods names and parameters
-        new MethodChangerVisitor().visit(cu, null);
+        {
+            new MethodChangerVisitor().visit(cu, null);
+        }
 
         // prints the changed compilation unit
         System.out.println(cu.toString());

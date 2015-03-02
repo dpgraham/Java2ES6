@@ -6,18 +6,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by danielgraham on 2015-02-24.
+ * The return object of a 'Parse'.
  */
 public class ParseOutput {
 
     private StringBuilder before;
     private StringBuilder after;
     private List<Node> childNodes;
+    private int indents;
+
+
+    public ParseOutput(StringBuilder before){
+        this.before = before;
+    }
+
+    public ParseOutput(StringBuilder before, StringBuilder after, List<Node> childNodes, int indents){
+        this.before = before == null ? new StringBuilder("") : before;
+        this.after = after == null ? new StringBuilder("") : after;
+        this.childNodes = childNodes;
+        this.indents = indents;
+    }
 
     public ParseOutput(StringBuilder before, StringBuilder after, List<Node> childNodes){
-        this.before = before;
-        this.after = after;
+        this.before = before == null ? new StringBuilder("") : before;
+        this.after = after == null ? new StringBuilder("") : after;
         this.childNodes = childNodes;
+        this.indents = 0;
     }
 
     public ParseOutput(){
@@ -46,5 +60,9 @@ public class ParseOutput {
 
     public void setChildNodes(ArrayList<Node> childNodes) {
         this.childNodes = childNodes;
+    }
+
+    public int getIndents() {
+        return indents;
     }
 }
